@@ -3,7 +3,7 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 app.get('/', (req, res) => {
-    res.send({ test: 'testing'})
+    res.send({ test: 'new folder structure'})
 })
 
 app.listen(PORT)
