@@ -8,7 +8,7 @@ import reduxThunk from 'redux-thunk'
 //Reducers
 import reducers from './reducers'
 // Actions
-import { } from './actions'
+// import { fetchUser } from './actions'
 // Components
 import App from './components/App';
 
@@ -18,7 +18,7 @@ if(module && module.hot) {
 
 const composeEnhancers = compose(
 	applyMiddleware(reduxThunk),
-	window.devToolsExtension ? window.devToolsExtension() : f => f
+	window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f
 )
 
 const store = createStore(reducers, {}, composeEnhancers)

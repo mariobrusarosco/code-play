@@ -6,12 +6,13 @@ import { connect } from 'react-redux'
 import * as actions from '../actions'
 // Components
 import Header from '../components/Header'
+import Landing from '../components/Landing'
 // Vendor Styles
 import 'materialize-css/dist/css/materialize.css'
 
 const Dashboard = () => <h2>Dashboard</h2>
 const SurveyNewer = () => <h2>SurveyNew</h2>
-const Landing = () => <h2>Landing</h2>
+
 
 const mapStateToProps = ({ auth }) => ({
 	auth

@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
   cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
+    maxAge: 2 * 60 * 1000,
     keys: ['adssadasd']
   })
 );

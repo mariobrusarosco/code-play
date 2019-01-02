@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 class Header extends Component {
 	userInfoToShow() {
@@ -9,7 +9,7 @@ class Header extends Component {
 		console.log(this.props.auth, !this.props.auth)
 		return (
 			<nav className="nav-wrapper">
-				<a className="left brand-logo">
+				<a className="left brand-logo" href="/">
 					Emaily
 				</a>
 				<ul className="right">
@@ -19,10 +19,19 @@ class Header extends Component {
 								Login With Google
 							</a>
 						}
-						<span>
-							{ this.props.auth && this.props.auth.user && this.props.auth.user.googleId }
-						</span>
 					</li>
+					{ this.props.auth && this.props.auth.user &&
+						<Fragment>
+							<li>
+								<img src={this.props.auth.user.img} />
+							</li>
+							<li>
+								<a href="/api/logout">
+									logout
+								</a>
+							</li>
+						</Fragment>
+					}
 				</ul>
 			</nav>
 		)
