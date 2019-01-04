@@ -1,17 +1,14 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 
 class Header extends Component {
-	userInfoToShow() {
-
-	}
-
 	render() {
-		console.log(this.props.auth, !this.props.auth)
+		// console.log(this.props.auth, !this.props.auth)
 		return (
 			<nav className="nav-wrapper">
-				<a className="left brand-logo" href="/">
+				<Link className="left brand-logo" to={this.props.auth ? '/surveys' : '/'}>
 					Emaily
-				</a>
+				</Link>
 				<ul className="right">
 					<li>
 						{ this.props.auth && !this.props.auth.user &&
@@ -23,7 +20,7 @@ class Header extends Component {
 					{ this.props.auth && this.props.auth.user &&
 						<Fragment>
 							<li>
-								<img src={this.props.auth.user.img} />
+								<img alt="asdsda" src={this.props.auth.user.img} />
 							</li>
 							<li>
 								<a href="/api/logout">
