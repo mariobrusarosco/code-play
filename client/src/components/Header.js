@@ -1,12 +1,8 @@
 import React, { Component, Fragment } from 'react'
+import Payments from './Payments'
 
 class Header extends Component {
-	userInfoToShow() {
-
-	}
-
 	render() {
-		console.log(this.props.auth, !this.props.auth)
 		return (
 			<nav className="nav-wrapper">
 				<a className="left brand-logo" href="/">
@@ -23,7 +19,10 @@ class Header extends Component {
 					{ this.props.auth && this.props.auth.user &&
 						<Fragment>
 							<li>
-								<img src={this.props.auth.user.img} />
+								<Payments />
+							</li>
+							<li>
+								<img src={this.props.auth.user.img} alt="" />
 							</li>
 							<li>
 								<a href="/api/logout">
