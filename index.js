@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
   cookieSession({
-    maxAge: 2 * 60 * 1000,
+    maxAge: 2 * 60 * 60 * 1000,
     keys: ['adssadasd']
   })
 );
@@ -20,6 +20,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
+require('./routes/billingRoutes')(app)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
