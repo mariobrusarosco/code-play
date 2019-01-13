@@ -20,6 +20,9 @@ class Header extends Component {
 					{ this.props.auth && this.props.auth.user &&
 						<Fragment>
 							<li>
+								Credits: { this.props.auth.user.credits }
+							</li>
+							<li>
 								<Payments />
 							</li>
 							<li>
