@@ -1,7 +1,6 @@
 const passport = require('passport');
 
 module.exports = app => {
-  app.get('/', (req, res) => res.send('Code Play'))
   app.get(
     '/auth/google',
     passport.authenticate('google', {
@@ -13,8 +12,9 @@ module.exports = app => {
     '/auth/google/callback',
     passport.authenticate('google'),
     (req, res) => {
-      res.redirect('/surveys')
-    });
+      res.redirect('/surveys');
+    }
+  );
 
   app.get('/api/logout', (req, res) => {
     req.logout();

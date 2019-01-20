@@ -4,5 +4,5 @@ module.exports = {
     mongoURI: 'mongodb://mario:walterwhite00@ds141623.mlab.com:41623/dev-code-play',
 		cookieKey: 'sdsdas*(8asdas8da90s8d023dasD_dfsaDsa)asd',
 		stripePublishableKey: 'pk_test_pGysh2XFNcLWHByQumPnjcKP',
-		stripeSecreteKey: 'sk_test_Q4BjECF1SYXPuTk2HSZYlug5'
+		stripeSecretKey: 'sk_test_Q4BjECF1SYXPuTk2HSZYlug5'
   }
