@@ -1,15 +1,14 @@
 import { combineReducers } from 'redux'
 
-import blogReducer from './blog-reducer'
-import usersReducer from './users-reducer'
+import streamsReducer from './streams-reducer'
+import authReducer from './auth-reducer'
 
 import { reducer as formReducer} from 'redux-form'
 
-
 const reducers = combineReducers({
-  blog: blogReducer,
-  users: usersReducer,
-  form: formReducer
+  form: formReducer,
+  streams: streamsReducer,
+  auth: authReducer,
 })
 
 export default reducers

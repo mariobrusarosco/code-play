@@ -1,40 +1,71 @@
-import _ from 'lodash'
+import streamsAPI from '../api/streams'
 
-export const selectSong = song => {
+export const signIn = userId => {
   return {
-    type: 'SELECT_SONG',
-    payload: song
+    type: 'SIGN_IN',
+    payload: userId
+  };
+};
+
+export const signOut = () => {
+  return {
+    type: 'SIGN_OUT'
+  };
+};
+
+
+export const createStream = formValues => {
+  return async (dispatch, getState) => {
+    const { userId } = getState().auth
+    const createdStream = await streamsAPI.post('/streams', { ...formValues, userId })
+
+    dispatch({
+      type: 'CREATE_STREAM',
+      payload: createdStream.data,
+    })
   }
 }
 
-import axiosJsonPlaceholder from '../api/json-placeholder'
+export const fetchStreams = () => {
+  return async dispatch => {
+    const fetchedStreams = await streamsAPI.get('/streams')
 
-export const fetchPostsAndUsers = () => async (dispatch, getState) => {
-  await dispatch(fetchPosts())
-
-  const userIds = _.chain(getState().blog.posts)
-    .map('userId')
-    .uniq()
-    .forEach(id => dispatch(fetchUser(id)))
-    .value()
-  }
-
-export const fetchPosts = () => async dispatch => {
-  const posts = await axiosJsonPlaceholder.get('/posts')
-
-  dispatch({ type: 'FETCH_POSTS', payload: posts.data })
-}
-
-export const fetchUser = function(id) {
-  return async function(dispatch) {
-    const response =  await axiosJsonPlaceholder.get(`/users/${id}`)
-
-    dispatch({ type: 'FETCH_USER', payload: response.data })
+    dispatch({
+      type: 'FETCH_STREAMS',
+      payload: fetchedStreams.data,
+    })
   }
 }
 
+export const fetchStream = streamID => {
+  return async dispatch => {
+    const fetchedStream = await streamsAPI.get(`/streams/${streamID}`)
 
+    dispatch({
+      type: 'FETCH_STREAM',
+      payload: fetchedStream.data,
+    })
+  }
+}
 
+export const editStream = (streamID, dataToUpdate) => {
+  return async dispatch => {
+    const updatedStream = await streamsAPI.put(`/streams/${streamID}`, dataToUpdate)
 
+    dispatch({
+      type: 'EDIT_STREAM',
+      payload: updatedStream.data,
+    })
+  }
+}
 
+export const deleteStream = streamID => {
+  return async dispatch => {
+    await streamsAPI.delete(`streams/${streamID}`)
 
+    dispatch({
+      type: 'DELETE_STREAM',
+      payload: streamID
+    })
+  }
+}

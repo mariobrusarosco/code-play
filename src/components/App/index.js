@@ -5,22 +5,23 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Header from 'components/Header'
 
 // Pages (Routes)
-import Home from '../../pages/Home'
-import New from '../../pages/New'
-import SignUp from '../../pages/SignUp'
-import Config from '../../pages/Config'
+import Create from '../../pages/Create'
+import Edit from '../../pages/Edit'
+import Delete from '../../pages/Delete'
+import List from '../../pages/List'
+import Show from '../../pages/Show'
 
-// console.log(newNote)
 class App extends Component {
   render() {
     return (
-      <div className="main">
+      <div className="main ui container">
         <BrowserRouter>
           <Header />
-          <Route path="/" exact component={Home} />
-          <Route path="/new" component={New} />
-          <Route path="/sign-up" component={SignUp} />
-          <Route path="/config" component={Config} />
+          <Route path="/" exact component={List} />
+          <Route path="/new" exact component={Create} />
+					<Route path="/edit" exact component={Edit} />
+          <Route path="/delete" exact component={Delete} />
+					<Route path="/show" exact component={Show} />
         </BrowserRouter>
       </div>
     )
