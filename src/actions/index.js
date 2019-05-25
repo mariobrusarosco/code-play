@@ -1,4 +1,6 @@
 import streamsAPI from '../api/streams'
+import history from '../app_history'
+
 
 export const signIn = userId => {
   return {
@@ -19,10 +21,12 @@ export const createStream = formValues => {
     const { userId } = getState().auth
     const createdStream = await streamsAPI.post('/streams', { ...formValues, userId })
 
-    dispatch({
+    await dispatch({
       type: 'CREATE_STREAM',
       payload: createdStream.data,
     })
+
+    history.push('/')
   }
 }
 
@@ -37,25 +41,16 @@ export const fetchStreams = () => {
   }
 }
 
-export const fetchStream = streamID => {
-  return async dispatch => {
-    const fetchedStream = await streamsAPI.get(`/streams/${streamID}`)
-
-    dispatch({
-      type: 'FETCH_STREAM',
-      payload: fetchedStream.data,
-    })
-  }
-}
-
 export const editStream = (streamID, dataToUpdate) => {
   return async dispatch => {
-    const updatedStream = await streamsAPI.put(`/streams/${streamID}`, dataToUpdate)
+    const updatedStream = await streamsAPI.patch(`/streams/${streamID}`, dataToUpdate)
 
     dispatch({
       type: 'EDIT_STREAM',
       payload: updatedStream.data,
     })
+
+    history.push('/')
   }
 }
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Router } from 'react-router-dom'
+import historyApp from '../../app_history'
 
 // Components
 import Header from 'components/Header'
@@ -15,14 +16,14 @@ class App extends Component {
   render() {
     return (
       <div className="main ui container">
-        <BrowserRouter>
+        <Router history={historyApp}>
           <Header />
           <Route path="/" exact component={List} />
           <Route path="/new" exact component={Create} />
-					<Route path="/edit" exact component={Edit} />
-          <Route path="/delete" exact component={Delete} />
+					<Route path="/edit/:id" exact component={Edit} />
+          <Route path="/delete/:id" exact component={Delete} />
 					<Route path="/show" exact component={Show} />
-        </BrowserRouter>
+        </Router>
       </div>
     )
   }
