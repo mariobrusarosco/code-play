@@ -27,12 +27,13 @@ class List extends React.Component {
 
   renderList() {
     return this.props.streams.map(stream => {
+
       return (
         <div className="item" key={stream.id}>
           {this.renderAdmin(stream)}
           <i className="large middle aligned icon camera" />
           <div className="content">
-            <Link to={`/${stream.id}`} className="header">
+            <Link to={`/streams/${stream.id}`} className="header">
               {stream.title}
             </Link>
             <div className="description">{stream.description}</div>

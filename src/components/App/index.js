@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route, Router } from 'react-router-dom'
+import { BrowserRouter, Route, Router, Switch } from 'react-router-dom'
 import historyApp from '../../app_history'
 
 // Components
@@ -18,11 +18,13 @@ class App extends Component {
       <div className="main ui container">
         <Router history={historyApp}>
           <Header />
-          <Route path="/" exact component={List} />
-          <Route path="/new" exact component={Create} />
-					<Route path="/edit/:id" exact component={Edit} />
-          <Route path="/delete/:id" exact component={Delete} />
-					<Route path="/show" exact component={Show} />
+          <Switch>
+            <Route path="/" exact component={List} />
+            <Route path="/new" exact component={Create} />
+            <Route path="/edit/:id" exact component={Edit} />
+            <Route path="/delete/:id" exact component={Delete} />
+            <Route path="/streams/:id" exact component={Show} />
+          </Switch>
         </Router>
       </div>
     )

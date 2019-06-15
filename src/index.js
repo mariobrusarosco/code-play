@@ -19,10 +19,12 @@ const store = createStore(
 )
 
 import App from './components/App'
+import AppPosts from './components/AppPosts'
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
+    {/* <AppPosts /> */}
   </Provider>,
   document.querySelector('#app')
 )

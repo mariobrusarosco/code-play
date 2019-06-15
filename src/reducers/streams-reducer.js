@@ -1,4 +1,5 @@
 
+import _ from 'lodash'
 import { handleActions } from 'redux-actions'
 
 const initialState = {
@@ -18,9 +19,9 @@ const streamsReducer = handleActions({
   EDIT_STREAM: (state, { payload: stream }) => ({
     ...state, [stream.id]: stream
   }),
-  DELETE_STREAM: (state, { payload: stream }) => ({
-    ...state, [stream.id]: null
-  })
+  DELETE_STREAM: (state, { payload: streamId }) => {
+    return _.omit(state, streamId )
+  }
 },[])
 
 export default streamsReducer
